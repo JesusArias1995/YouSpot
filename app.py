@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 
-redirect_uri_sp = 'https://youspot.herokuapp.com//spotify_callback'
+redirect_uri_sp = 'https://youspot.herokuapp.com/spotify_callback'
 scope_sp = 'user-read-private user-read-email'
 token_url_sp = "https://accounts.spotify.com/api/token"
 
