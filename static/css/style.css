@@ -677,7 +677,7 @@ ul.style3 .first {
 	{
 		position: relative;
 		text-align: center;
-		background: url(../img/banner.jpg) no-repeat center;
+		background: url(/static/img/banner.jpg) no-repeat center;
 		background-size: cover;
 	}
 
