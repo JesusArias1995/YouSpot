@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}oauth{% endblock %}
+{% block content %}
+	
+    <p>Nombre: {{datos["display_name"]}}</p>
+    <p>Email: {{datos["email"]}}</p>
+    <p>País: {{datos["country"]}}</p>
+
+    <br/><a href="/logout_spotify">Cerrar</a>
+{% endblock %}
