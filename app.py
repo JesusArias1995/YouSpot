@@ -77,9 +77,9 @@ def salir_spotify():
 
 #Parte de buscar listas en Youtube
 
-@app.route('/listasyt')
-def inicio():
-	return render_template("formularioyt.html")
+#@app.route('/listasyt')
+#def inicio():
+#	return render_template("formularioyt.html")
 
 
 #@app.route('/buscar_listasyt', method=["post", "get"])
