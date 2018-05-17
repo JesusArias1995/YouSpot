@@ -82,14 +82,14 @@ def inicio():
 	return render_template("formularioyt.html")
 
 
-@app.route('/buscar_listasyt', method="post")
+@app.route('/buscar_listasyt', method=["post", "get"])
 def buscar_listas_yt():
 	buscar = request.forms.get('buscar')
 	cantidad = request.forms.get('cantidad')
 	key=os.environ["key_yt"]
 	playlist="playlist"
 	part="id,snippet"
-	payload={"part":part,"key":key, "q": buscar, "maxResults":cantidad, "type":playlist}
+	payload={"part":part,"key":key, "q":buscar, "maxResults":cantidad, "type":playlist}
 
 	r=requests.get('https://www.googleapis.com/youtube/v3/search',params=payload)
 
