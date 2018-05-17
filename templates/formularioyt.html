@@ -4,10 +4,13 @@
 <br>
 	<h1>BUSCADOR DE PLAYLIST</h1>
 	<form action="/buscar_listasyt" method="post">
-		<label>Nombre playlist:</label>
-		<input type="text" name="buscar" required/>
-		<label>Numero de playlist:</label>
-		<input type="number" name="cantidad" min='1' value='1' max='10' required/>
+	<div>
+		<fieldset>
+			<legend>Busca las playlist</legend>
+			Nombre playlist: <input type="text" name="buscar" required/>
+			Numero de playlist: <input type="number" name="cantidad" min='1' value='1' max='10' required/>
+			<br>
+		</fieldset>
 		<input type="submit" value="Enviar">
 	</form>
 <br>
