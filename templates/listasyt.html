@@ -2,7 +2,7 @@
 {% block title %}oauth{% endblock %}
 {% block buscadoryt %}
 <br>
-	<h1>BUSCADOR DE VIDEOS</h1>
+	<h1>BUSCADOR DE PLAYLIST</h1>
 	<h1>Resultado de la busqueda <strong>{{buscar}}</strong> son:</h1>
 	% for a,b in zip(lista_ti,lista_id):
 		<p>Enlace: <a href="https://www.youtube.com/watch?v={{b}}"><strong>{{a}}</strong></a></p>
