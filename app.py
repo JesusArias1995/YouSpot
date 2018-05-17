@@ -77,14 +77,19 @@ def salir_spotify():
 
 #Parte de buscar listas en Youtube
 
+@app.route('/listasyt')
+def inicio():
+    return render_template("formularioyt.html")
+
+
 @app.route('/buscar_listasyt', method="post")
 def buscar_listas_yt():
   buscar = request.forms.get('buscar')
   cantidad = request.forms.get('cantidad')
   key=os.environ["key_yt"] 
-  video="video"
+  playlist="playlist"
   part="id,snippet"
-  payload={"part":part,"key":key, "q": buscar, "maxResults":cantidad, "type":video}
+  payload={"part":part,"key":key, "q": buscar, "maxResults":cantidad, "type":playlist}
 
   r=requests.get('https://www.googleapis.com/youtube/v3/search',params=payload)
   if r.status_code==200:
@@ -94,18 +99,18 @@ def buscar_listas_yt():
     lista_id=[]
 
     for x in js['items']:
-      lista_id.append(x['id']['videoId'])
+      lista_id.append(x['id']['playlistId'])
       lista_ti.append(x['snippet']['title'])
 
     if len(lista_id) != 0:
-      return template('formulario.tpl', lista_id=lista_id, lista_ti=lista_ti, buscar=buscar)
+      return render_template('listasyt.html', lista_id=lista_id, lista_ti=lista_ti, buscar=buscar)
 
     else:
-      return template('error.tpl')
+      return render_template('listanoencontrada.html')
 
 
   else:
-    return template('error.tpl')
+    return render_template('listanoencontrada.html')
 
 
 if __name__ == '__main__':
