@@ -74,6 +74,40 @@ def salir_spotify():
     session.pop("token_sp",None)
     return redirect("/spotify")
 
+
+#Parte de buscar listas en Youtube
+
+@app.route('/buscar_listasyt', method="post")
+def buscar_listas_yt():
+  buscar = request.forms.get('buscar')
+  cantidad = request.forms.get('cantidad')
+  key=os.environ["key_yt"] 
+  video="video"
+  part="id,snippet"
+  payload={"part":part,"key":key, "q": buscar, "maxResults":cantidad, "type":video}
+
+  r=requests.get('https://www.googleapis.com/youtube/v3/search',params=payload)
+  if r.status_code==200:
+    js=json.loads(r.text)
+
+    lista_ti=[]
+    lista_id=[]
+
+    for x in js['items']:
+      lista_id.append(x['id']['videoId'])
+      lista_ti.append(x['snippet']['title'])
+
+    if len(lista_id) != 0:
+      return template('formulario.tpl', lista_id=lista_id, lista_ti=lista_ti, buscar=buscar)
+
+    else:
+      return template('error.tpl')
+
+
+  else:
+    return template('error.tpl')
+
+
 if __name__ == '__main__':
     port=os.environ["PORT"]
     app.run('0.0.0.0',int(port), debug=True)
