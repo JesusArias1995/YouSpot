@@ -108,7 +108,7 @@
 				position: absolute;
 				left: 25px;
 				top: 20px;
-				background: url('images/mobileUI-site-nav-opener-bg.svg') 0px 0px no-repeat;
+				background: url('/static/css/images/mobileUI-site-nav-opener-bg.svg') 0px 0px no-repeat;
 				opacity: 0.50;
 			}
 
