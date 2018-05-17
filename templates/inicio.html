@@ -1,10 +1,5 @@
 {% extends "base.html" %}
 {% block title %}oauth{% endblock %}
-{% block menu %}
-	<li><a href="/" class="yt" accesskey="1">Inicio</a></li>
-	<li><a href="{{ url_for('listasyt') }}" class="button alt" accesskey="2">Buscar listas en Youtube</a></li>
-	<li><a href="{{ url_for('playlist_spot') }}" class="button alt" accesskey="3">Mis playlist Spotify</a></li>
-{% endblock %}
 {% block content %}
 	<a href="/spotify"><button type="button" class="btn btn-primary btn-sm">Entrar en Spotify (oAuth v2)</button></a>
 {% endblock %}
