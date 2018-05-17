@@ -13,3 +13,5 @@ urllib3==1.22
 Werkzeug==0.14.1
 bottle
 lxml
+request==1.0.0
+post==1.0.0
