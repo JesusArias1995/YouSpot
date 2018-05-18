@@ -77,11 +77,12 @@ def salir_spotify():
 
 
 @app.route('/listasyt')
-def inicio():
+def listasyt():
 	return render_template("formularioyt.html")
-	
+
+
 @app.route('/buscar_listasyt', method=["post", "get"])
-def buscar_listas_yt():
+def buscar_listasyt():
 	buscar = request.forms.get('buscar')
 	cantidad = request.forms.get('cantidad')
 	key=os.environ["key_yt"]
