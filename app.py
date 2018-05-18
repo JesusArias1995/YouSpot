@@ -41,14 +41,14 @@ def spotify():
 
 @app.route('/perfil_spotify')
 def info_perfil_spotify():
-  if token_valido_spotify():
-	return redirect("/perfil_usuario_spotify")
-  else:
-	oauth2 = OAuth2Session(os.environ["client_id_spotify"], redirect_uri=redirect_uri_sp,scope=scope_sp)
-	authorization_url, state = oauth2.authorization_url('https://accounts.spotify.com/authorize')
-	session.pop("token_sp",None)
-	session["oauth_state_sp"]=state
-	return redirect(authorization_url)  
+	if token_valido_spotify():
+		return redirect("/perfil_usuario_spotify")
+	else:
+		oauth2 = OAuth2Session(os.environ["client_id_spotify"], redirect_uri=redirect_uri_sp,scope=scope_sp)
+		authorization_url, state = oauth2.authorization_url('https://accounts.spotify.com/authorize')
+		session.pop("token_sp",None)
+		session["oauth_state_sp"]=state
+		return redirect(authorization_url)  
 
 @app.route('/spotify_callback')
 def get_token_spotify():
