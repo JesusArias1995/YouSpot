@@ -81,7 +81,7 @@ def listasyt():
 	return render_template("formularioyt.html")
 
 
-@app.route('/buscar_listasyt', method=["post", "get"])
+@app.route('/buscar_listasyt', methods=["post", "get"])
 def buscar_listasyt():
 	buscar = request.forms.get('buscar')
 	cantidad = request.forms.get('cantidad')
