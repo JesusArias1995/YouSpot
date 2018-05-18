@@ -6,6 +6,8 @@ from urllib.parse import parse_qs
 import os,json
 app = Flask(__name__)
 app.secret_key="lskhfkjashfkasjhflakshdjlkasjdh"
+app.jinja_env.filters['zip'] = zip
+
 
 
 redirect_uri_sp = 'https://youspot.herokuapp.com/spotify_callback'

@@ -4,7 +4,7 @@
 <br>
 	<h1>BUSCADOR DE PLAYLIST</h1>
 	<h1>Resultado de la busqueda <strong>{{buscar}}</strong> son:</h1>
-	{% for a,b in zip(lista_ti,lista_id) -%}
+	{% for a,b in lista_ti|zip(lista_id) %}
 		<p>Enlace: <a href="https://www.youtube.com/watch?v={{b}}"><strong>{{a}}</strong></a></p>
 		<br>
 		<iframe width="854" height="480" src="https://www.youtube.com/embed/{{b}}"  allowfullscreen></iframe>
