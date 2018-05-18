@@ -83,8 +83,8 @@ def listasyt():
 
 @app.route('/buscar_listasyt', methods=["post", "get"])
 def buscar_listasyt():
-	buscar = request.forms.get('buscar')
-	cantidad = request.forms.get('cantidad')
+	buscar = request.form.get('buscar')
+	cantidad = request.form.get('cantidad')
 	key=os.environ["key_yt"]
 	playlist="playlist"
 	part="id,snippet"
