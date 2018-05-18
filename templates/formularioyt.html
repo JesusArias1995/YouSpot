@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% block title %}oauth{% endblock %}
+{% block menu %}
+	<li><a href="{{ url_for('inicio') }}" class="yt" accesskey="1">Inicio</a></li>
+	<li><a href="{{ url_for('listasyt') }}" class="button alt" accesskey="2">Buscar listas en Youtube</a></li>
+{% endblock %}
 {% block formularioyt %}
 <br>
 	<h1>BUSCADOR DE PLAYLIST</h1>
