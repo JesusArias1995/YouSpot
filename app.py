@@ -83,15 +83,15 @@ def salir_spotify():
 def mis_playlist():
 	if not "id" in session:
 		return redirect('/spotify')
+		
+	if token_valido_spotify():
+		token=json.loads(session["token_sp"])
+		oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token)
+		r = oauth2.get('https://api.spotify.com/v1/users/{}/playlists' .format(session["id"]))
+		doc=json.loads(r.content.decode("utf-8"))
+		return render_template("misplaylist.html", datos=doc)
 	else:
-		if token_valido_spotify():
-			token=json.loads(session["token_sp"])
-			oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token)
-			r = oauth2.get('https://api.spotify.com/v1/users/{}/playlists' .format(session["id"]))
-			doc=json.loads(r.content.decode("utf-8"))
-			return render_template("misplaylist.html", datos=doc)
-		else:
-			return redirect('/perfil')
+		return redirect('/perfil')
 
 
 
