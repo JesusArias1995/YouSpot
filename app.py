@@ -37,10 +37,6 @@ def token_valido_spotify():
 	return token_ok
 
 
-@app.route('/spotify')
-def spotify():
-	return render_template("oauth2_spotify.html")
-
 @app.route('/perfil_spotify')
 def info_perfil_spotify():
 	if token_valido_spotify():
