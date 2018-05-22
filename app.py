@@ -106,9 +106,9 @@ def buscar_listasyt():
 	buscar = request.form.get('buscar')
 	cantidad = request.form.get('cantidad')
 	key=os.environ["key_yt"]
-	playlist="playlist"
+	playlist="video"
 	part="id,snippet"
-	payload={"part":part,"key":key, "q":buscar, "maxResults":cantidad, "type":video}
+	payload={"part":part,"key":key, "q":buscar, "maxResults":cantidad, "type":playlist}
 	print(payload)
 	r=requests.get('https://www.googleapis.com/youtube/v3/search',params=payload)
 	if r.status_code==200:
