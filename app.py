@@ -116,7 +116,7 @@ def buscar_listasyt():
 		lista_ti=[]
 		lista_id=[]
 		for x in js['items']:
-			lista_id.append(x['id']['playlistId'])
+			lista_id.append(x['id']['videoId'])
 			lista_ti.append(x['snippet']['title'])
 		if len(lista_id) != 0:
 			return render_template('listasyt.html', lista_id=lista_id, lista_ti=lista_ti, buscar=buscar)
