@@ -37,6 +37,10 @@ def token_valido_spotify():
 	return token_ok
 
 
+@app.route('/spotify')
+def spotify():
+	return render_template("oauth2_spotify.html")
+
 @app.route('/perfil_spotify')
 def info_perfil_spotify():
 	if token_valido_spotify():
@@ -91,10 +95,6 @@ def mis_playlist():
 
 
 
-#@app.route('/canciones_playlist', methods=["post", "get"])
-#def canciones_playlist():
-
-
 
 @app.route('/listasyt')
 def listasyt():
@@ -124,7 +124,6 @@ def buscar_listasyt():
 			return render_template('listanoencontrada.html')
 	else:
 		return render_template('listanoencontrada.html')
-
 
 if __name__ == '__main__':
 	port=os.environ["PORT"]
