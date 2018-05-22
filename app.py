@@ -17,7 +17,6 @@ token_url_sp = "https://accounts.spotify.com/api/token"
 
 @app.route('/')
 def inicio():
-
 	return render_template("inicio.html")
 
 
@@ -125,11 +124,6 @@ def buscar_listasyt():
 			return render_template('listanoencontrada.html')
 	else:
 		return render_template('listanoencontrada.html')
-
-
-
-
-
 
 
 if __name__ == '__main__':
