@@ -2,7 +2,7 @@
 {% block title %}oauth{% endblock %}
 {% block content %}
 	{% for i in datos["items"] -%}
-    	<p>Id: {{i["name"]}}</p><p><a href="/canciones_playlist", id={{i["id"]}}>Ver canciones</a></p>
+    	<p>Id: {{i["name"]}}</p><p><a href={0}">Ver Canciones</a>({0}) .format(url_for('/canciones_playlist', id={{i["id"]}})</p>
     {% endfor %}
     <br/><a href="/logout_spotify">Cerrar</a>
 {% endblock %}
