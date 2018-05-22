@@ -7,7 +7,7 @@
 	{% for a,b in lista_ti|zip(lista_id) %}
 		<p>Enlace: <a href="https://www.youtube.com/watch?v={{b}}"><strong>{{a}}</strong></a></p>
 		<br>
-		<iframe width="854" height="480" src="https://www.youtube.com/embed/{{b}}"  allowfullscreen></iframe>
+		<p><iframe width="854" height="480" src="https://www.youtube.com/embed/{{b}}"  allowfullscreen></iframe></p>
 	{% endfor %}
 <br>
 {% endblock %}
