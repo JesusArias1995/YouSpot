@@ -17,6 +17,7 @@ token_url_sp = "https://accounts.spotify.com/api/token"
 
 @app.route('/')
 def inicio():
+
 	return render_template("inicio.html")
 
 
