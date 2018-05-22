@@ -87,6 +87,7 @@ def mis_playlist():
 	if token_valido_spotify():
 		token=json.loads(session["token_sp"])
 		oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token)
+		params=
 		r = oauth2.get('https://api.spotify.com/v1/users/{}/playlists' .format(session["id"]))
 		doc=json.loads(r.content.decode("utf-8"))
 		return render_template("misplaylist.html", datos=doc)
@@ -106,7 +107,7 @@ def buscar_listasyt():
 	buscar = request.form.get('buscar')
 	cantidad = request.form.get('cantidad')
 	key=os.environ["key_yt"]
-	playlist="video"
+	playlist="playlist"
 	part="id,snippet"
 	payload={"part":part,"key":key, "q":buscar, "maxResults":cantidad, "type":playlist}
 	print(payload)
@@ -116,7 +117,7 @@ def buscar_listasyt():
 		lista_ti=[]
 		lista_id=[]
 		for x in js['items']:
-			lista_id.append(x['id']['videoId'])
+			lista_id.append(x['id']['playlistId'])
 			lista_ti.append(x['snippet']['title'])
 		if len(lista_id) != 0:
 			return render_template('listasyt.html', lista_id=lista_id, lista_ti=lista_ti, buscar=buscar)
@@ -128,5 +129,3 @@ def buscar_listasyt():
 if __name__ == '__main__':
 	port=os.environ["PORT"]
 	app.run('0.0.0.0',int(port), debug=True)
-
-
