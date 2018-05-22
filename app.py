@@ -91,6 +91,18 @@ def mis_playlist():
 		return redirect('/spotify')
 
 
+@app.route('/canciones_playlist/<id>',methods=['GET'])
+def saludo(id):
+	if token_valido_spotify():
+		token=json.loads(session["token_sp"])
+		oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token)
+		r = oauth2.get('https://api.spotify.com/v1/users/{}/playlists/{}/tracks' .format(session["id"], id))
+		doc=json.loads(r.content.decode("utf-8"))
+		return render_template("cancionesplaylist.html", datos=doc)
+	else:
+		return redirect('/spotify')
+
+
 
 
 @app.route('/listasyt')
