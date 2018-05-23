@@ -162,7 +162,7 @@ def cancionesyt(title):
 		doc=json.loads(r.content.decode("utf-8"))
 		return render_template("cancionesyt.html", datos=doc)
 	else:
-		return redirect('/spotify')
+		return redirect('/cancionesyt/<title>')
 
 if __name__ == '__main__':
 	port=os.environ["PORT"]
