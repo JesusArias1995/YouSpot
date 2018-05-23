@@ -156,11 +156,9 @@ def cancionesyt(title):
 	if token_valido_spotify():
 		token=json.loads(session["token_sp"])
 		oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token)
-		tipo="track,artist"
-		market="ES"
 		headers = {'Accept': 'application/json', 'Content-Type': 'application-json', 'Authorization': 'Bearer ' + session['token_sp']}
-		payload={'q':title, 'type':tipo, 'market':market}
-		r = oauth2.get('https://api.spotify.com/v1/search' params=payload, headers=headers)
+		payload={'q':title, 'type':'track,artist', 'market':'ES'}
+		r = oauth2.get('https://api.spotify.com/v1/search', params=payload, headers=headers)
 		doc=json.loads(r.content.decode("utf-8"))
 		return render_template("cancionesyt.html", datos=doc)
 	else:
