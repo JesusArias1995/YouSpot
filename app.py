@@ -72,14 +72,14 @@ def info_perfil_usuario_spotify():
 @app.route('/logout_spotify')
 def salir_spotify():
 	session.pop("token_sp",None)
-	return redirect("/spotify")
+	return redirect("/")
 
 
 
 @app.route('/mis_playlist')
 def mis_playlist():
 	if not "id" in session:
-		return redirect('/spotify')
+		return redirect('/')
 
 	if token_valido_spotify():
 		token=json.loads(session["token_sp"])
@@ -88,7 +88,7 @@ def mis_playlist():
 		doc=json.loads(r.content.decode("utf-8"))
 		return render_template("misplaylist.html", datos=doc)
 	else:
-		return redirect('/spotify')
+		return redirect('/')
 
 
 @app.route('/<idc>')
