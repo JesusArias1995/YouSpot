@@ -91,7 +91,7 @@ def mis_playlist():
 		return redirect('/')
 
 
-@app.route('/<idc>')
+@app.route('/cancionesplaylist/<idc>')
 def saludo(idc):
 	if token_valido_spotify():
 		token=json.loads(session["token_sp"])
