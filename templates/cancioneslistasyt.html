@@ -4,6 +4,7 @@
 <br>
 	<h1>VIDEOS DE LA PLAYLIST</h1>
 	{% for a,b in lista_ti|zip(lista_id) %}
+		<p><a href="/cancionesyt/{{a}}"><strong>Canciones encontradas en Spotify</strong></a></p>
 		<p>Enlace: <a href="//www.youtube.com/watch?v={{b}}"><strong>{{a}}</strong></a></p>
 		<br>
 		<p><iframe width="800" height="480" src="//www.youtube.com/embed/{{b}}"  allowfullscreen></iframe></p>

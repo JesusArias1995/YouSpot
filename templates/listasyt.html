@@ -5,7 +5,7 @@
 	<h1>BUSCADOR DE PLAYLIST</h1>
 	<h1>Resultado de la busqueda <strong>{{buscar}}</strong> son:</h1>
 	{% for a,b in lista_ti|zip(lista_id) %}
-		<p>Ver videos: <a href="/videoslista/{{b}}"><strong>{{a}}</strong></a><a href="/cancionesyt/{{a}}"><strong>Canciones encontradas en Spotify</strong></a></p>
+		<p>Ver videos: <a href="/videoslista/{{b}}"><strong>{{a}}</strong></a></p>
 		<br>
 	{% endfor %}
 <br>
