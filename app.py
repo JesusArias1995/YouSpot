@@ -149,6 +149,7 @@ def videoslista(videoid):
 			lista_ti.append(x['snippet']['title'])
 		if len(lista_id) != 0:
 			return render_template('cancioneslistasyt.html', lista_id=lista_id, lista_ti=lista_ti)
+	print (lista_ti)
 
 if __name__ == '__main__':
 	port=os.environ["PORT"]
