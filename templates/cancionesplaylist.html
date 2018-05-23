@@ -2,7 +2,7 @@
 {% block title %}oauth{% endblock %}
 {% block content %}
 	{% for i in datos["items"] -%}
-    	<p>Id: {{i["track"]["name"]}}</p>
+    	<p> {{i["artists"]["name"]}}-{{i["track"]["name"]}}</p>
     {% endfor %}
     <br/><a href="/mis_playlist">Cerrar</a>
 {% endblock %}
