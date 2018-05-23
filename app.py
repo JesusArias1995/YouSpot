@@ -118,7 +118,6 @@ def buscar_listasyt():
 	playlist="playlist"
 	part="id,snippet"
 	payload={"part":part,"key":key, "q":buscar, "maxResults":cantidad, "type":playlist}
-	print(payload)
 	r=requests.get('https://www.googleapis.com/youtube/v3/search',params=payload)
 	if r.status_code==200:
 		js=json.loads(r.text)
@@ -133,6 +132,23 @@ def buscar_listasyt():
 			return render_template('listanoencontrada.html')
 	else:
 		return render_template('listanoencontrada.html')
+
+@app.route('/videoslista/<videoid>')
+def videoslista(videoid):
+	key=os.environ["key_yt"]
+	part="id,snippet"
+	idplaylist=videoid
+	payload={"part":part,"key":key, "playlistId":idplaylist}
+	r=requests.get('https://www.googleapis.com/youtube/v3/playlistItems',params=payload)
+	if r.status_code==200:
+		js=json.loads(r.text)
+		lista_ti=[]
+		lista_id=[]
+		for x in js['items']:
+			lista_id.append(x['resourceId']['videoId'])
+			lista_ti.append(x['snippet']['title'])
+		if len(lista_id) != 0:
+			return render_template('cancioneslistasyt.html', lista_id=lista_id, lista_ti=lista_ti, buscar=buscar)
 
 if __name__ == '__main__':
 	port=os.environ["PORT"]

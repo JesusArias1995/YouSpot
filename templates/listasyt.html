@@ -5,10 +5,8 @@
 	<h1>BUSCADOR DE PLAYLIST</h1>
 	<h1>Resultado de la busqueda <strong>{{buscar}}</strong> son:</h1>
 	{% for a,b in lista_ti|zip(lista_id) %}
-		<p>Enlace: <a href="//www.youtube.com/watch?v={{b}}"><strong>{{a}}</strong></a></p>
+		<p>Ver videos: <a href="/videoslista/{{b}}"><strong>{{a}}</strong></a></p>
 		<br>
-		<p><iframe width="800" height="480" src="//www.youtube.com/embed/{{b}}"  allowfullscreen></iframe></p>
-		<p>{{b}}</p>
 	{% endfor %}
 <br>
 <p><a href="/listasyt">Volver atras</a></p>
