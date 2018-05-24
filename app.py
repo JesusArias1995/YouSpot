@@ -12,7 +12,7 @@ app.jinja_env.filters['zip'] = zip
 
 
 redirect_uri_sp = 'https://youspot.herokuapp.com/spotify_callback'
-scope_sp = 'user-read-private user-read-email playlist-read-private'
+scope_sp = 'user-read-private user-read-email playlist-read-private playlist-modify-public playlist-modify-private'
 token_url_sp = "https://accounts.spotify.com/api/token"
 
 
@@ -196,7 +196,7 @@ def añadircancionplaylist(idc, uri):
 		oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token)
 		headers = {'Accept': 'application/json', 'Content-Type': 'application-json', 'Authorization': 'Bearer ' + session['token_sp']}
 		payload={'uris':uri}
-		r = oauth2.post('https://api.spotify.com/v1/users/{}/playlists/{}/tracks' .format(session["id"], idc), params=payload headers=headers)
+		r = oauth2.post('https://api.spotify.com/v1/users/{}/playlists/{}/tracks' .format(session["id"], idc), params=payload, headers=headers)
 		doc=json.loads(r.content.decode("utf-8"))
 		return render_template("/misplaylist")
 	else:
