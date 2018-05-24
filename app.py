@@ -187,7 +187,7 @@ def añadiraplaylist(uri):
 		return redirect('/')
 
 
-@app.route('/añadircancionplaylist/<idc>/<uri>', methods=['post'])
+@app.route('/añadircancionplaylist/<idc>/<uri>', methods=['post', 'get'])
 def añadircancionplaylist(idc, uri):
 	if not "id" in session:
 		return redirect('/')
