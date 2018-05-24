@@ -3,6 +3,7 @@
 {% block content %}
 	{% for i in datos["tracks"]["items"] -%}
     	<p><strong>{{i["name"]}}</strong> - {{i["uri"]}}</p>
+    	<p><iframe src="https://open.spotify.com/embed?uri={{i["uri"]}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></p>
     {% endfor %}
     <br/><a href="/logout_spotify">Cerrar</a>
 {% endblock %}
