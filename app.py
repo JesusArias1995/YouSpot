@@ -12,7 +12,7 @@ app.jinja_env.filters['zip'] = zip
 
 
 redirect_uri_sp = 'https://youspot.herokuapp.com/spotify_callback'
-scope_sp = 'user-read-private user-read-email playlist-read-private playlist-modify-public playlist-modify-private user-read-playback-state user-read-currently-playing user-library-read user-top-read user-read-recently-played'
+scope_sp = 'user-read-private user-read-email playlist-read-private playlist-modify-public playlist-modify-private playlist-read-collaborative'
 token_url_sp = "https://accounts.spotify.com/api/token"
 
 
