@@ -152,7 +152,9 @@ def videoslista(videoid):
 
 
 def quitar_palabras_claves(cad):
-	palabras=["ft.","[Official Video]"]
+	palabras=["ft.","[Official Video]","(Official Video)"]
+	claves=cad[cad.find("("):cad.find(")")+1]
+	palabras.append(claves)
 	for palabra in palabras:
 		cad=cad.replace(palabra,"")
 	return cad
