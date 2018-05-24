@@ -171,6 +171,13 @@ def cancionesyt(title):
 	else:
 		return redirect('/cancionesyt/<title>')
 
+
+#@app.route('/añadiraplaylist/<uri>', methods=["post", "get"])
+#def añadiraplaylist(uri)
+
+
+
+
 if __name__ == '__main__':
 	port=os.environ["PORT"]
 	app.run('0.0.0.0',int(port), debug=True)
