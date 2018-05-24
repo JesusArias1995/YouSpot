@@ -107,7 +107,7 @@ def nuevaplaylist():
 		desc = request.form.get('desc')
 		public = request.form.get('public')
 		headers = {'Accept': 'application/json', 'Content-Type': 'application-json', 'Authorization': 'Bearer ' + session['token_sp']}
-		payload={'Request Body':{'name':nombre, 'description':desc, 'public':public}}
+		payload={'name':nombre, 'description':desc, 'public':public}
 		r = oauth2.post('https://api.spotify.com/v1/users/{}/playlists' .format(session["id"]), data=json.dumps(payload), headers=headers)
 		doc=json.loads(r.content.decode("utf-8"))
 		return render_template("creacionplaylist.html", datos=doc, nombre=nombre, desc=desc, public=public)
