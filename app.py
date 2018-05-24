@@ -151,8 +151,15 @@ def videoslista(videoid):
 			return render_template('cancioneslistasyt.html', lista_id=lista_id, lista_ti=lista_ti)
 
 
+def quitar_palabras_claves(cad):
+	palabras=["ft.","[Oficial video]"]
+	for palabra in palabras:
+		cad=cad.replace(palabra,"")
+	return cad
+
 @app.route('/cancionesyt/<title>')
 def cancionesyt(title):
+	title=quitar_palabras_claves(title)
 	if token_valido_spotify():
 		token=json.loads(session["token_sp"])
 		oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token)
