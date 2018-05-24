@@ -3,14 +3,24 @@
 {% block content %}
 <br>
 	<h1>NUEVA PLAYLIST</h1>
-	<form action="/nuevaplaylist" method="post">
-	<div>
+	<form action="/nuevaplaylist" method="POST">
 		<fieldset>
-			<legend>Rellena los datos</legend>
-			Nombre playlist: <input type="text" name="nombre" required/>
-			Descripción: <input type="text" name="desc" required/>
-			Publico(true/false):  <input type="text" name="public" required/>
-			<br>
+			<legend>Rellenna los campos</legend>
+			<div class="form-group">
+				<label for="nombre">Nombre Playlist: </label>
+				<input class="form-control" id="nombre" type="text" name="nombre" maxlength="50" required> <br/>
+			</div>
+			<div class="form-group">
+				<label for="descripcion">Descripcion: </label>
+				<input class="form-control" id="description" type="text" name="desc" maxlength="60"> <br/>
+			</div>
+			<div class="form-group">
+				<label for="public">Playlist pública: </label>
+				<select name="public" class="form-control" id="public">
+					<option value="true">Sí</option>
+					<option value="false">No</option>
+				</select> <br/>
+			</div>
 		</fieldset>
 		<input type="submit" value="Crear">
 	</form>
