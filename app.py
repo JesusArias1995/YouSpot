@@ -70,7 +70,7 @@ def info_perfil_usuario_spotify():
 		session["id"]=doc["id"]
 		return render_template("perfil_spotify.html", datos=doc)
 	else:
-		return redirect('/perfil')
+		return redirect('/')
 
 @app.route('/logout_spotify')
 def salir_spotify():
