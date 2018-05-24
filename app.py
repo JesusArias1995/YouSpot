@@ -91,6 +91,11 @@ def mis_playlist():
 		return redirect('/')
 
 
+@app.route('/newplaylist')
+def newplaylist():
+	return render_template("nuevaplaylist.html")
+
+
 @app.route('/nuevaplaylist', methods=['post', 'get'])
 def nuevaplaylist():
 	if not "id" in session:
@@ -105,7 +110,7 @@ def nuevaplaylist():
 		payload={'Request Body':{'name':nombre, 'description':desc, 'public':public}}
 		r = oauth2.post('https://api.spotify.com/v1/users/{}/playlists' .format(session["id"]), params=payload, headers=headers)
 		doc=json.loads(r.content.decode("utf-8"))
-		return render_template("nuevaplaylist.html", nombre=nombre, desc=desc, public=public)
+		return render_template("creacionplaylist.html", datos=doc, nombre=nombre, desc=desc, public=public)
 	else:
 		return redirect('/')
 
