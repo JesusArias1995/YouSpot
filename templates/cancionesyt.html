@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}oauth{% endblock %}
 {% block content %}
-	{% for i in datos["tracks"]["items"] -%}
+	{% for i in datos["tracks"]["items"][0] -%}
     	<p>{{i}}</p>
     {% endfor %}
     <br/><a href="/logout_spotify">Cerrar</a>
