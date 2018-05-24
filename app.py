@@ -18,7 +18,10 @@ token_url_sp = "https://accounts.spotify.com/api/token"
 
 @app.route('/')
 def inicio():
-	return render_template("inicio.html")
+	if not "id" in session:
+		return redirect('/perfil_usuario_spotify')
+	else:
+		return render_template("inicio.html")
 
 
 def token_valido_spotify():
