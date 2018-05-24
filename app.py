@@ -138,7 +138,7 @@ def videoslista(videoid):
 	key=os.environ["key_yt"]
 	part="id,snippet"
 	idplaylist=videoid
-	payload={"part":part,"key":key, "playlistId":idplaylist}
+	payload={"part":part,"key":key, "playlistId":idplaylist, "maxResults":25}
 	r=requests.get('https://www.googleapis.com/youtube/v3/playlistItems',params=payload)
 	if r.status_code==200:
 		js=json.loads(r.text)
