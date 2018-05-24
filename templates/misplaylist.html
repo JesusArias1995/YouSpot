@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}oauth{% endblock %}
 {% block content %}
+	<h1><a href="/nuevaplaylist"><strong>Nueva Playlist</strong></a></h1>
 	{% for i in datos["items"] -%}
     	<p><strong>Nombre: </strong><strong>{{i["name"]}}</strong></p>
     	<p><iframe src="https://open.spotify.com/embed?uri={{i["uri"]}}" width="250" height="330" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></p>

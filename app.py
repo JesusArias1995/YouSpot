@@ -91,6 +91,25 @@ def mis_playlist():
 		return redirect('/')
 
 
+@app.route('/nuevaplaylist', methods=['post', 'get'])
+def nuevaplaylist():
+	if not "id" in session:
+		return redirect('/')
+	if token_valido_spotify():
+		token=json.loads(session["token_sp"])
+		oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token, scope=scope_sp)
+		nombre = request.form.get('nombre')
+		desc = request.form.get('desc')
+		public = request.form.get('public')
+		headers = {'Accept': 'application/json', 'Content-Type': 'application-json', 'Authorization': 'Bearer ' + session['token_sp']}
+		payload={'Request Body':{'name':nombre, 'description':desc, 'public':public}}
+		r = oauth2.post('https://api.spotify.com/v1/users/{}/playlists' .format(session["id"]), params=payload, headers=headers)
+		doc=json.loads(r.content.decode("utf-8"))
+		return render_template("nuevaplaylist.html", nombre=nombre, desc=desc, public=public)
+	else:
+		return redirect('/')
+
+
 @app.route('/cancionesplaylist/<idc>')
 def saludo(idc):
 	if token_valido_spotify():
