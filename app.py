@@ -173,7 +173,7 @@ def cancionesyt(title):
 
 
 @app.route('/elegirplaylist/<uri>', methods=["post", "get"])
-def añadiraplaylist(uri)
+def añadiraplaylist(uri):
 	if not "id" in session:
 		return redirect('/')
 
