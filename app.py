@@ -193,7 +193,7 @@ def añadircancionplaylist(idc, uri):
 		return redirect('/')
 	if token_valido_spotify():
 		token=json.loads(session["token_sp"])
-		oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token)
+		oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token, scope=scope_sp)
 		headers = {'Accept': 'application/json', 'Content-Type': 'application-json', 'Authorization': 'Bearer ' + session['token_sp']}
 		payload={'uris':uri}
 		r = oauth2.post('https://api.spotify.com/v1/users/{}/playlists/{}/tracks' .format(session["id"], idc), params=payload, headers=headers)
