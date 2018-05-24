@@ -2,21 +2,10 @@
 {% block title %}oauth{% endblock %}
 {% block formularioyt %}
 <br>
-	<h1>BUSCADOR DE PLAYLIST</h1>
-	<form action="/buscar_listasyt" method="post">
-	<div>
-		<fieldset>
-			<legend>Busca las playlist</legend>
-			Nombre playlist: <input type="text" name="buscar" required/>
-			Numero de playlist: <input type="number" name="cantidad" min='1' value='1' max='10' required/>
-			<br>
-		</fieldset>
-		<input type="submit" value="Enviar">
-	</form>
-
+	<h1>BUSCADOR DE LISTAS DE REPRODUCCION</h1>
 	<form action="/eventos/add" method="POST">
 		<fieldset>
-			<legend>Buscador de listas de reproducción</legend>
+			<legend>Intoduce el nombre de la lista y el número</legend>
 			<div class="form-group">
 				<label for="buscar">Nombre de la lista: </label>
 				<input class="form-control" id="nombre" type="text" name="buscar" maxlength="100" required> <br/>
@@ -26,6 +15,7 @@
 				<input class="form-control" type="number" name="cantidad" min='1' value='1' max='10' required/>
 			</div>
 		</fieldset>
+		<input type="submit" value="Buscar">
 	</form>
 <br>
 {% endblock %}
