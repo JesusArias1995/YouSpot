@@ -203,6 +203,30 @@ def cancionesyt(title):
 		return redirect('/cancionesyt/<title>')
 
 
+
+@app.route('/cancioneslistayt/<lista_tit>')
+def cancioneslistayt(lista_tit):
+	lista_titulos_ok=[]
+	lista_uri=[]
+	for titulo in lista_tit:
+		lista_titulos_ok.append(quitar_palabras_claves(titulo))
+	if token_valido_spotify():
+		token=json.loads(session["token_sp"])
+		oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token)
+		headers = {'Accept': 'application/json', 'Content-Type': 'application-json', 'Authorization': 'Bearer ' + session['token_sp']}
+		for ti in lista_titulos_ok:
+			payload={'q':ti, 'type':'track,artist', 'market':'ES'}
+			r = oauth2.get('https://api.spotify.com/v1/search', params=payload, headers=headers)
+			doc=json.loads(r.content.decode("utf-8"))
+			lista_uri.append(doc["tracks"]["items"][0]["uri"])
+
+		return render_template("cancioneslistayt.html", datos=lista_uri)
+	else:
+		return redirect('/cancionesyt/<title>')
+
+
+
+
 @app.route('/elegirplaylist/<uri>', methods=["post", "get"])
 def añadiraplaylist(uri):
 	if not "id" in session:
