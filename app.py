@@ -220,7 +220,7 @@ def cancioneslistayt(lista_tit):
 			doc=json.loads(r.content.decode("utf-8"))
 			lista_uri.append(doc["tracks"]["items"][0]["uri"])
 
-		return render_template("cancioneslistayt.html", datos=lista_uri)
+		return render_template("cancioneslistacompletayt.html", datos=lista_uri)
 	else:
 		return redirect('/cancionesyt/<title>')
 
