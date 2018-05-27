@@ -205,7 +205,7 @@ def cancionesyt(title):
 
 
 @app.route('/tratarlista/<lista_tit>')
-def cancioneslistayt(lista_tit):
+def tratarlista(lista_tit):
 	lista_titulos_ok=[]
 	lista_uri=[]
 	for titulo in lista_tit:
