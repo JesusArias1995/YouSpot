@@ -209,7 +209,7 @@ def tratarlista(lista_tit):
 	lista_titulos_ok=[]
 	lista_uri=[]
 	for titulo in lista_tit:
-		lista_titulos_ok.append(quitar_palabras_claves(titulo))
+		lista_titulos_ok.append(title=quitar_palabras_claves(titulo))
 	if token_valido_spotify():
 		for ti in lista_titulos_ok:
 			token=json.loads(session["token_sp"])
