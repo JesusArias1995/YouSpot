@@ -204,7 +204,7 @@ def cancionesyt(title):
 
 
 
-@app.route('/cancioneslistayt/<lista_tit>')
+@app.route('/tratarlista/<lista_tit>')
 def cancioneslistayt(lista_tit):
 	lista_titulos_ok=[]
 	lista_uri=[]
