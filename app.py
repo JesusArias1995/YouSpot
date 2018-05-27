@@ -204,15 +204,20 @@ def cancionesyt(title):
 
 
 
+def tratar_lista_titulos(lista):
+	lista_ok=[]
+	for tit in lista:
+		titu=quitar_palabras_claves(tit)
+		lista_ok.append(titu)
+	return lista_ok
+
+
 @app.route('/tratarlista/<lista_tit>')
 def tratarlista(lista_tit):
-	lista_titulos_ok=[]
+	lista_ok=tratar_lista_titulos(lista_tit)
 	lista_uri=[]
-	for titulo in lista_tit:
-		title=quitar_palabras_claves(titulo)
-		lista_titulos_ok.append(title)
 	if token_valido_spotify():
-		for ti in lista_titulos_ok:
+		for ti in lista_ok:
 			token=json.loads(session["token_sp"])
 			oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token)
 			headers = {'Accept': 'application/json', 'Content-Type': 'application-json', 'Authorization': 'Bearer ' + session['token_sp']}
