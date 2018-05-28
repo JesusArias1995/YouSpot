@@ -237,11 +237,30 @@ def tratarlista(clave):
 				datos=doc["tracks"]["items"][0]["uri"]
 				lista_uri.append(datos)
 		lista_uri=list(set(lista_uri))
-		print(lista_uri)
-		return render_template("cancioneslistacompletayt.html", datos=lista_uri)
+		clave2=uuid.uuid4().hex
+		session[clave2]=json.dumps(lista_uri)
+		return render_template("cancioneslistacompletayt.html", datos=lista_uri, clave=clave2)
 	else:
 		return redirect('/cancionesyt/<title>')
 
+
+
+@app.route('/añadirlistaplaylist/<clave2>')
+def añadirlistaplaylist(clave2):
+	lista_uri=session[clave2]
+	session.pop(clave2)
+	lista_uri2=lista_uri[1:-1].replace("'","").split(",")
+	for uri in lista_uri2:
+		if token_valido_spotify():
+			token=json.loads(session["token_sp"])
+			oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token, scope=scope_sp)
+			headers = {'Accept': 'application/json', 'Content-Type': 'application-json', 'Authorization': 'Bearer ' + session['token_sp']}
+			payload={'uris':uri}
+			r = oauth2.post('https://api.spotify.com/v1/users/{}/playlists/{}/tracks' .format(session["id"], idc), params=payload, headers=headers)
+			doc=json.loads(r.content.decode("utf-8"))
+			return render_template("listaañadida.html", datos=doc)
+		else:
+			return redirect('/')
 
 
 
