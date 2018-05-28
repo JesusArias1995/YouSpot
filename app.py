@@ -237,6 +237,7 @@ def tratarlista(clave):
 				datos=doc["tracks"]["items"][0]["uri"]
 				lista_uri.append(datos)
 		lista_uri=list(set(lista_uri))
+		print(lista_uri)
 		return render_template("cancioneslistacompletayt.html", datos=lista_uri)
 	else:
 		return redirect('/cancionesyt/<title>')
