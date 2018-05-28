@@ -257,7 +257,7 @@ def añadiraplaylist2(clave2):
 @app.route('/añadirlistaplaylist/<idc>/<clave>')
 def añadirlistaplaylist(idc, clave):
 	lista_uri=session[clave]
-	lista_uri2=lista_uri[1:-1].replace('"',"").split(",")
+	lista_uri2=lista_uri[1:-1].replace('"',"").replace(" ","").split(",")
 	session.pop(clave)
 	print(lista_uri2)
 
