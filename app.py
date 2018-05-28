@@ -228,7 +228,7 @@ def tratarlista(lista_tit):
 			if doc["tracks"]["items"]!=[]:
 				datos=doc["tracks"]["items"][0]["uri"]
 				lista_uri.append(datos)
-
+		print(lista_uri)
 		return render_template("cancioneslistacompletayt.html", datos=lista_uri)
 	else:
 		return redirect('/cancionesyt/<title>')
