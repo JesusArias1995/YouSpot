@@ -245,26 +245,23 @@ def tratarlista(clave):
 
 @app.route('/elegirplaylist2/<clave2>', methods=["post", "get"])
 def añadiraplaylist2(clave2):
-	lista_uri=session[clave2]
-
-	lista_uri2=lista_uri[1:-1].replace('"',"").split(",")
-	print(lista_uri2)
 	if token_valido_spotify():
 		token=json.loads(session["token_sp"])
 		oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token)
 		r = oauth2.get('https://api.spotify.com/v1/users/{}/playlists' .format(session["id"]))
 		doc=json.loads(r.content.decode("utf-8"))
-		clave3=uuid.uuid4().hex
-		session[clave3]=json.dumps(lista_uri2)
-		return render_template("elegirplaylist2.html", datos=doc, clave3=clave3)
+
+		
+		return render_template("elegirplaylist2.html", datos=doc, clave3=clave2)
 	else:
 		return redirect('/')
 
 @app.route('/añadirlistaplaylist/<idc>/<clave3>')
 def añadirlistaplaylist(idc, clave3):
 	lista_uri=session[clave3]
+	lista_uri2=lista_uri[1:-1].replace('"',"").split(",")
+	lista_uri=session[clave3]
 	session.pop(clave3)
-	lista_uri2=lista_uri[1:-1].replace("'","").split(",")
 	print(lista_uri2)
 	for uri in lista_uri2:
 		if token_valido_spotify():
