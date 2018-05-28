@@ -75,6 +75,7 @@ def info_perfil_usuario_spotify():
 
 @app.route('/logout_spotify')
 def salir_spotify():
+	session.clear()
 	session.pop("token_sp",None)
 	return redirect("/")
 
