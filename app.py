@@ -225,7 +225,7 @@ def tratarlista(lista_tit):
 			payload={'q':ti, 'type':'track,artist', 'market':'ES'}
 			r = oauth2.get('https://api.spotify.com/v1/search', params=payload, headers=headers)
 			doc=json.loads(r.content.decode("utf-8"))
-			if "uri" in doc["tracks"]["items"][0]:
+			if doc["tracks"]["items"]!=[]:
 				datos=doc["tracks"]["items"][0]["uri"]
 				lista_uri.append(datos)
 
