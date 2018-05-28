@@ -4,7 +4,7 @@
 	{% for i in datos["items"] -%}
 		<p><a href="/añadirlistaplaylist/{{i["id"]}}/{{clave3}}"><strong>{{i["name"]}}</strong></a></p>
     	<p><strong>id: </strong><strong>{{i["id"]}}</strong></p>
-    	<p><strong>id: </strong><strong>{{clave}}</strong></p>
+    	<p><strong>id: </strong><strong>{{clave3}}</strong></p>
     {% endfor %}
     <br/><a href="/logout_spotify">Cerrar</a>
 {% endblock %}

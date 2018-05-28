@@ -260,7 +260,7 @@ def añadiraplaylist2(clave2):
 		return redirect('/')
 
 @app.route('/añadirlistaplaylist/<idc>/<clave2>')
-def añadirlistaplaylist(clave2):
+def añadirlistaplaylist(idc, clave2):
 	lista_uri=session[clave2]
 	session.pop(clave2)
 	lista_uri2=lista_uri[1:-1].replace("'","").split(",")
