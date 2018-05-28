@@ -179,6 +179,7 @@ def videoslista(videoid):
 		if len(lista_id) != 0:
 			clave=uuid.uuid4().hex
 			session[clave]=json.dumps(lista_ti)
+			print(session[clave])
 			return render_template('cancioneslistasyt.html', lista_id=lista_id, lista_ti=lista_ti,clave=clave)
 
 
@@ -219,8 +220,8 @@ def tratar_lista_titulos(lista):
 @app.route('/tratarlista/<clave>')
 def tratarlista(clave):
 	lista_tit=session[clave]
+	print(lista_tit)
 	session.pop(clave)
-	print (lista_tit)
 	lista_tit2=lista_tit[1:-1].replace("'","").split(",")
 	lista_ok=tratar_lista_titulos(lista_tit2)
 	
