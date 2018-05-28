@@ -223,7 +223,7 @@ def tratarlista(clave):
 	lista_tit2=lista_tit[1:-1].replace("'","").split(",")
 
 	lista_ok=tratar_lista_titulos(lista_tit2)
-	print(lista_ok)
+	
 	lista_uri=[]
 	if token_valido_spotify():
 		for ti in lista_ok:
@@ -236,7 +236,7 @@ def tratarlista(clave):
 			if len(doc["tracks"]["items"])>0:
 				datos=doc["tracks"]["items"][0]["uri"]
 				lista_uri.append(datos)
-		print(lista_uri)
+		lista_uri=list(set(lista_uri))
 		return render_template("cancioneslistacompletayt.html", datos=lista_uri)
 	else:
 		return redirect('/cancionesyt/<title>')
