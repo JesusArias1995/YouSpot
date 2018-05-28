@@ -259,10 +259,10 @@ def añadiraplaylist2(clave2):
 	else:
 		return redirect('/')
 
-@app.route('/añadirlistaplaylist/<idc>/<clave2>')
-def añadirlistaplaylist(idc, clave2):
-	lista_uri=session[clave2]
-	session.pop(clave2)
+@app.route('/añadirlistaplaylist/<idc>/<clave3>')
+def añadirlistaplaylist(idc, clave3):
+	lista_uri=session[clave3]
+	session.pop(clave3)
 	lista_uri2=lista_uri[1:-1].replace("'","").split(",")
 	for uri in lista_uri2:
 		if token_valido_spotify():
@@ -272,9 +272,9 @@ def añadirlistaplaylist(idc, clave2):
 			payload={'uris':uri}
 			r = oauth2.post('https://api.spotify.com/v1/users/{}/playlists/{}/tracks' .format(session["id"], idc), params=payload, headers=headers)
 			doc=json.loads(r.content.decode("utf-8"))
-			return render_template("listaañadida.html", datos=doc)
 		else:
 			return redirect('/')
+		return render_template("listaañadida.html", datos=doc)
 
 
 
