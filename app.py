@@ -250,18 +250,15 @@ def añadiraplaylist2(clave2):
 		oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token)
 		r = oauth2.get('https://api.spotify.com/v1/users/{}/playlists' .format(session["id"]))
 		doc=json.loads(r.content.decode("utf-8"))
-
-		
 		return render_template("elegirplaylist2.html", datos=doc, clave3=clave2)
 	else:
 		return redirect('/')
 
-@app.route('/añadirlistaplaylist/<idc>/<clave3>')
-def añadirlistaplaylist(idc, clave3):
-	lista_uri=session[clave3]
+@app.route('/añadirlistaplaylist/<idc>/<clave>')
+def añadirlistaplaylist(idc, clave):
+	lista_uri=session[clave]
 	lista_uri2=lista_uri[1:-1].replace('"',"").split(",")
-	lista_uri=session[clave3]
-	session.pop(clave3)
+	session.pop(clave)
 	print(lista_uri2)
 	for uri in lista_uri2:
 		if token_valido_spotify():
