@@ -244,8 +244,22 @@ def tratarlista(clave):
 		return redirect('/cancionesyt/<title>')
 
 
+@app.route('/elegirplaylist2/<clave2>', methods=["post", "get"])
+def añadiraplaylist(clave2):
+	lista_uri=session[clave2]
+	lista_uri2=lista_uri[1:-1].replace("'","").split(",")
+	if token_valido_spotify():
+		token=json.loads(session["token_sp"])
+		oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token)
+		r = oauth2.get('https://api.spotify.com/v1/users/{}/playlists' .format(session["id"]))
+		doc=json.loads(r.content.decode("utf-8"))
+		clave3=uuid.uuid4().hex
+		session[clave3]=json.dumps(lista_uri2)
+		return render_template("elegirplaylist2.html", datos=doc, clave3=clave3)
+	else:
+		return redirect('/')
 
-@app.route('/añadirlistaplaylist/<clave2>')
+@app.route('/añadirlistaplaylist/<idc>/<clave2>')
 def añadirlistaplaylist(clave2):
 	lista_uri=session[clave2]
 	session.pop(clave2)
