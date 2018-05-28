@@ -245,7 +245,7 @@ def tratarlista(clave):
 
 
 @app.route('/elegirplaylist2/<clave2>', methods=["post", "get"])
-def añadiraplaylist(clave2):
+def añadiraplaylist2(clave2):
 	lista_uri=session[clave2]
 	lista_uri2=lista_uri[1:-1].replace("'","").split(",")
 	if token_valido_spotify():
