@@ -221,6 +221,7 @@ def tratarlista(clave):
 	lista_tit=session[clave]
 	session.pop(clave)
 	lista_ok=tratar_lista_titulos(lista_tit)
+	print(lista_ok)
 	lista_uri=[]
 	if token_valido_spotify():
 		for ti in lista_ok:
