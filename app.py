@@ -214,7 +214,8 @@ def tratar_lista_titulos(lista):
 
 @app.route('/tratarlista/<lista_tit>')
 def tratarlista(lista_tit):
-	lista_ok=tratar_lista_titulos(lista_tit)
+	lista_tit2=lista_tit[1:-1].replace("'","").split(",")
+	lista_ok=tratar_lista_titulos(lista_tit2)
 	lista_uri=[]
 	if token_valido_spotify():
 		for ti in lista_ok:
