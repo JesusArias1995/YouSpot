@@ -264,6 +264,7 @@ def añadirlistaplaylist(idc, clave3):
 	lista_uri=session[clave3]
 	session.pop(clave3)
 	lista_uri2=lista_uri[1:-1].replace("'","").split(",")
+	print(lista_uri2)
 	for uri in lista_uri2:
 		if token_valido_spotify():
 			token=json.loads(session["token_sp"])
