@@ -220,7 +220,6 @@ def tratar_lista_titulos(lista):
 @app.route('/tratarlista/<clave>')
 def tratarlista(clave):
 	lista_tit=session[clave]
-	session.pop(clave)
 	lista_tit2=lista_tit[1:-1].replace("'","").split(",")
 	lista_ok=tratar_lista_titulos(lista_tit2)
 	
