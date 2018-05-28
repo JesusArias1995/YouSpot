@@ -5,6 +5,8 @@ from requests_oauthlib import OAuth2Session
 from oauthlib.oauth2 import TokenExpiredError
 from urllib.parse import parse_qs
 import os,json
+import uuid
+
 app = Flask(__name__)
 app.secret_key="lskhfkjashfkasjhflakshdjlkasjdh"
 app.jinja_env.filters['zip'] = zip
@@ -175,7 +177,9 @@ def videoslista(videoid):
 			lista_id.append(x['snippet']['resourceId']['videoId'])
 			lista_ti.append(x['snippet']['title'])
 		if len(lista_id) != 0:
-			return render_template('cancioneslistasyt.html', lista_id=lista_id, lista_ti=lista_ti)
+			clave=uuid.uuid4().hex
+			session[clave]=json.dumps(lista_ti)
+			return render_template('cancioneslistasyt.html', lista_id=lista_id, lista_ti=lista_ti,clave=clave)
 
 
 def quitar_palabras_claves(cad):
@@ -212,8 +216,10 @@ def tratar_lista_titulos(lista):
 	return lista_ok
 
 
-@app.route('/tratarlista/<lista_tit>')
-def tratarlista(lista_tit):
+@app.route('/tratarlista/<clave>')
+def tratarlista(clave):
+	lista_tit=json.loads(session[clave])
+	session.pop(clave)
 	lista_tit2=lista_tit[1:-1].replace("'","").split(",")
 	lista_ok=tratar_lista_titulos(lista_tit2)
 	lista_uri=[]
