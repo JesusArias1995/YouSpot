@@ -260,17 +260,18 @@ def añadirlistaplaylist(idc, clave):
 	lista_uri2=lista_uri[1:-1].replace('"',"").split(",")
 	session.pop(clave)
 	print(lista_uri2)
-	for uri in lista_uri2:
-		if token_valido_spotify():
-			token=json.loads(session["token_sp"])
-			oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token, scope=scope_sp)
-			headers = {'Accept': 'application/json', 'Content-Type': 'application-json', 'Authorization': 'Bearer ' + session['token_sp']}
+
+	if token_valido_spotify():
+		token=json.loads(session["token_sp"])
+		oauth2 = OAuth2Session(os.environ["client_id_spotify"], token=token, scope=scope_sp)
+		headers = {'Accept': 'application/json', 'Content-Type': 'application-json', 'Authorization': 'Bearer ' + session['token_sp']}
+		for uri in lista_uri2:
 			payload={'uris':uri}
 			r = oauth2.post('https://api.spotify.com/v1/users/{}/playlists/{}/tracks' .format(session["id"], idc), params=payload, headers=headers)
 			doc=json.loads(r.content.decode("utf-8"))
-		else:
-			return redirect('/')
-		return render_template("listaañadida.html", datos=doc)
+	else:
+		return redirect('/')
+	return render_template("listaañadida.html", datos=doc)
 
 
 
