@@ -206,7 +206,7 @@ def cancionesyt(title):
 		doc=json.loads(r.content.decode("utf-8"))
 		return render_template("cancionesyt.html", datos=doc)
 	else:
-		return redirect('/cancionesyt/<title>')
+		return redirect('/')
 
 
 
