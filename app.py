@@ -225,7 +225,10 @@ def tratarlista(lista_tit):
 			payload={'q':ti, 'type':'track,artist', 'market':'ES'}
 			r = oauth2.get('https://api.spotify.com/v1/search', params=payload, headers=headers)
 			doc=json.loads(r.content.decode("utf-8"))
-			datos=doc["tracks"]["items"][0]["uri"]
+			if doc["tracks"]["items"][0]["uri"]:
+				datos=doc["tracks"]["items"][0]["uri"]
+			else:
+				"No ha encontrado cancion"
 			lista_uri.append(datos)
 
 		return render_template("cancioneslistacompletayt.html", datos=lista_uri)
