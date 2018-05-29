@@ -271,7 +271,7 @@ def añadirlistaplaylist(idc, clave):
 			doc=json.loads(r.content.decode("utf-8"))
 	else:
 		return redirect('/')
-	return render_template("listaañadida.html", datos=doc)
+	return render_template("misplaylist.html")
 
 
 
