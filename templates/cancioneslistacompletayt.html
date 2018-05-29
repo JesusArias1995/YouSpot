@@ -2,9 +2,9 @@
 {% block title %}oauth{% endblock %}
 {% block content %}
 	<h2><a href="/elegirplaylist2/{{clave}}">Añadir a playlist...</a></h2>
+	<h2>Canciones encontradas</h2>
 	{% for i in datos -%}
-    	<p>{{i}}</p>
-    	<p><iframe src="https://open.spotify.com/embed?uri={{i}}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe><a href="/elegirplaylist/{{i}}">Añadir a playlist...</a>
+    	<p><iframe src="https://open.spotify.com/embed?uri={{i}}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     {% endfor %}
-    <br/><a href="/logout_spotify">Cerrar</a>
+    <br/>
 {% endblock %}

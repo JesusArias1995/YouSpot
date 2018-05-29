@@ -223,8 +223,6 @@ def tratarlista(clave):
 	lista_tit=session[clave]
 	lista_tit2=lista_tit[1:-1].replace("'","").replace('"',"").split(",")
 	lista_ok=tratar_lista_titulos(lista_tit2)
-	print("*********")
-	print(lista_ok)
 	lista_uri=[]
 	if token_valido_spotify():
 		for ti in lista_ok:
@@ -242,7 +240,7 @@ def tratarlista(clave):
 		session[clave]=json.dumps(lista_uri)
 		return render_template("cancioneslistacompletayt.html", datos=lista_uri, clave=clave)
 	else:
-		return redirect('/cancionesyt/<title>')
+		return redirect('/')
 
 
 @app.route('/elegirplaylist2/<clave2>', methods=["post", "get"])
