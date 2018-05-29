@@ -2,7 +2,7 @@
 {% block title %}oauth{% endblock %}
 {% block buscadoryt %}
 <br>
-	<h1>VIDEOS DE LA PLAYLIST</h1>
+	<h1>VIDEOS DE LA LISTA</h1>
 	<h2><a href="/tratarlista/{{clave}}">Añadir toda la lista a una playlist</a></h2>
 	{% for a,b in lista_ti|zip(lista_id) %}
 		<p>Enlace a Youtube: <a href="//www.youtube.com/watch?v={{b}}"><strong>{{a}}</strong></a></br>
