@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% block title %}oauth{% endblock %}
 {% block content %}
+	<h2>Elige playlist</h2>
 	{% for i in datos["items"] -%}
-		<p><a href="/añadircancionplaylist/{{i["id"]}}/{{uri}}"><strong>{{i["name"]}}</strong></a></p>
-    	<p><strong>id: </strong><strong>{{i["id"]}}</strong></p>
-    	<p><strong>id: </strong><strong>{{uri}}</strong></p>
+		<p><strong>Playlist: </strong><a href="/añadircancionplaylist/{{i["id"]}}/{{uri}}"><strong>{{i["name"]}}</strong></a></p>
     {% endfor %}
-    <br/><a href="/logout_spotify">Cerrar</a>
+    <br/>
 {% endblock %}
