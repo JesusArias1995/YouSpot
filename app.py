@@ -204,7 +204,11 @@ def cancionesyt(title):
 		payload={'q':title, 'type':'track,artist', 'market':'ES'}
 		r = oauth2.get('https://api.spotify.com/v1/search', params=payload, headers=headers)
 		doc=json.loads(r.content.decode("utf-8"))
-		return render_template("cancionesyt.html", datos=doc)
+
+		if len(datos["tracks"]["items"])>0:
+			return render_template("cancionesyt.html", datos=doc)
+		else:
+			return render_template("cancionnoencontrada.html")
 	else:
 		return redirect('/')
 
@@ -238,7 +242,10 @@ def tratarlista(clave):
 				lista_uri.append(datos)
 		lista_uri=list(set(lista_uri))
 		session[clave]=json.dumps(lista_uri)
-		return render_template("cancioneslistacompletayt.html", datos=lista_uri, clave=clave)
+		if len(lista_uri)>0:
+			return render_template("cancioneslistacompletayt.html", datos=lista_uri, clave=clave)
+		else:
+			return render_template("cancionesnoencontradas.html")
 	else:
 		return redirect('/')
 
