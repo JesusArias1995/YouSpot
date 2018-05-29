@@ -205,7 +205,7 @@ def cancionesyt(title):
 		r = oauth2.get('https://api.spotify.com/v1/search', params=payload, headers=headers)
 		doc=json.loads(r.content.decode("utf-8"))
 
-		if len(datos["tracks"]["items"])>0:
+		if len(doc["tracks"]["items"])>0:
 			return render_template("cancionesyt.html", datos=doc)
 		else:
 			return render_template("cancionnoencontrada.html")
