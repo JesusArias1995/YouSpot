@@ -5,11 +5,9 @@
 	<h1>VIDEOS DE LA PLAYLIST</h1>
 	<h2><a href="/tratarlista/{{clave}}">Añadir toda la lista a una playlist</a></h2>
 	{% for a,b in lista_ti|zip(lista_id) %}
-		<p><a href="/cancionesyt/{{a}}"><strong>Canciones encontradas en Spotify</strong></a></p>
-		<p>Enlace: <a href="//www.youtube.com/watch?v={{b}}"><strong>{{a}}</strong></a></p>
+		<p>Enlace: <a href="//www.youtube.com/watch?v={{b}}"><strong>{{a}}</strong></a><a href="/cancionesyt/{{a}}"><strong>Buscar cancion en Spotify</strong></a></p>
 		<br>
 		<p><iframe width="800" height="480" src="//www.youtube.com/embed/{{b}}"  allowfullscreen></iframe></p>
 	{% endfor %}
 <br>
-<p><a href="/buscar_listasyt">Volver atras</a></p>
 {% endblock %}
