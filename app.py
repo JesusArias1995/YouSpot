@@ -271,7 +271,7 @@ def añadirlistaplaylist(idc, clave):
 			doc=json.loads(r.content.decode("utf-8"))
 	else:
 		return redirect('/')
-	return render_template("misplaylist.html")
+	return render_template("listaañadida.html", datos=doc)
 
 
 
@@ -301,7 +301,7 @@ def añadircancionplaylist(idc, uri):
 		payload={'uris':uri}
 		r = oauth2.post('https://api.spotify.com/v1/users/{}/playlists/{}/tracks' .format(session["id"], idc), params=payload, headers=headers)
 		doc=json.loads(r.content.decode("utf-8"))
-		return render_template("misplaylist.html")
+		return render_template("cancionañadida.html", datos=doc)
 	else:
 		return redirect('/')
 
